@@ -7,7 +7,7 @@
     {% extends 'base.html' %}
     <title>
         {% block title %}
-        Create A New Blog Post!
+        Create A New Blog Category!
         {% endblock%}
     </title>
 </head>
@@ -15,23 +15,15 @@
     
     {% block content %}
     {% if user.is_authenticated %}
-        <h1>Add Blog Post...</h1>
+        <h1>Add Blog Category...</h1>
         <br><br/>
         <div class="form-group">
-        <form method="POST" class="col-md-9" enctype="multipart/form-data">
+        <form method="POST" class="col-md-6">
             {% csrf_token %}
-            {{ form.media }}
             {{ form.as_p }}
-            <button class="btn btn-secondary">Post</button>
+            <button class="btn btn-secondary">Add Category</button>
         </div>
         </form>
-        <script>
-            var name = "{{ user.id }}";
-            document.getElementById("user").value
-                = name;
-
-        </script>
-
     {% else %}
     Please login first!
     {% endif %}
