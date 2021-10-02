@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% extends 'base.html' %}
+    <title>
+        {% block title %}
+        Edit Profile Page
+        {% endblock%}
+    </title>
+</head>
+<body>
+    
+    {% block content %}
+    <!-- {% if user.is_authenticated %}
+        {% if user.id == profile.user.id %} -->
+            <h1>Edit Profile Page...</h1>
+            <br><br/>
+            <div class="form-group">
+            <form method="POST" class="col-md-6" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="btn btn-secondary">Update Profile Page</button>
+            </div>
+            </form>
+            
+        <!-- {% else %}
+        You are not the correct User to Edit This Page...
+        {% endif %}
+    {% else %}
+        Please login first!
+    {% endif %} -->
+    {% endblock %}
+</body>
+</html>
