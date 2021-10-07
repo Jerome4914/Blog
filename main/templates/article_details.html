@@ -32,14 +32,14 @@
     <hr>
     <br/>
     {% if post.header_image %}
-    <img src="{{ post.header_image.url }}">
+    <img src="{{ post.header_image.url }}" width="500" height="600">
     {% endif %}
     <br></br>
     {{post.body|safe}}
     <br></br>
-    <a href="{% url 'home' %}"class="btn btn-secondary">Back</a>
+    <!-- <a href="{% url 'home' %}"class="btn btn-secondary">Back</a> -->
 
-    <br><br/>
+    <!-- <br><br/> -->
     <hr>
     <br/>
     <form action="{% url 'like_post' post.pk %}" method="POST" class="col-md-9">
@@ -56,8 +56,8 @@
     {% endif %}
         - {{ total_likes }} Likes
     </form>
-
     <br></br>
+    
     <div class="card mb-3">
         <div class="row g-0">
             <div class="col-md-2">
@@ -98,6 +98,23 @@
             </div>
         </div>
     </div>
+    <h1>Comments...</h1>
+        {% if not post.comments.all %}
+            No Comments Yet...<a href="{% url 'add_comment' post.pk %}">Add One</a>
+        {% else %}
+        <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+            {% for comment in post.comments.all %}
+            <strong>
+                {{ comment.name }} - 
+                {{ comment.date_added }}
+            </strong>
+            <br/>
+                {{ comment.body }}
+            <br/><br/>
+            {% endfor %}
+            <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+        {% endif %}
+        <br/>
     {% endblock %}
 </body>
 </html>
