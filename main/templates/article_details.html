@@ -30,13 +30,11 @@
     </small><br/>
         
     <hr>
-    <br/>
+    
     {% if post.header_image %}
     <img src="{{ post.header_image.url }}" width="500" height="600">
     {% endif %}
-    <br></br>
     {{post.body|safe}}
-    <br></br>
     <!-- <a href="{% url 'home' %}"class="btn btn-secondary">Back</a> -->
 
     <!-- <br><br/> -->
@@ -74,21 +72,21 @@
                 {{ post.author.last_name }}
                 </h5>
                 <p class="small text-muted">
-                    <a href="{%url 'show_profile_page' post.author.profile.id %}">Profile Page</a>
+                    <a class="color" href="{%url 'show_profile_page' post.author.profile.id %}">Profile Page</a>
                     {% if post.author.profile.website_url %}
-                    |<a href="{{ post.author.profile.website_url }}">LinkedIn</a>
+                    |<a class="color" href="{{ post.author.profile.website_url }}">LinkedIn</a>
                     {% endif %} 
                     {% if post.author.profile.facebook_url %}
-                    |<a href="{{ post.author.profile.facebook_url }}">Facebook</a>
+                    |<a class="color" href="{{ post.author.profile.facebook_url }}">Facebook</a>
                     {% endif %}
                     {% if post.author.profile.twitter_url %}
-                    |<a href="{{ post.author.profile.twitter_url }}">Twitter</a>
+                    |<a class="color" href="{{ post.author.profile.twitter_url }}">Twitter</a>
                     {% endif %}
                     {% if post.author.profile.instagram_url %}
-                    |<a href="{{ post.author.profile.instagram_url }}">Instagram</a>
+                    |<a class="color" href="{{ post.author.profile.instagram_url }}">Instagram</a>
                     {% endif %} 
                     {% if post.author.profile.pinterest_url %}
-                    |<a href="{{ post.author.profile.pinterest_url }}">Pinterest</a>
+                    |<a class="color" href="{{ post.author.profile.pinterest_url }}">Pinterest</a>
                     {% endif %}
                 </p>
                 <p class="card-text">
