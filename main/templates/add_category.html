@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,22 +12,24 @@
         {% endblock%}
     </title>
 </head>
+
 <body>
-    
+
     {% block content %}
     {% if user.is_authenticated %}
-        <h1>Add Blog Category...</h1>
-        <br><br/>
-        <div class="form-group">
+    <h1>Add Blog Category...</h1>
+    <br><br />
+    <div class="form-group">
         <form method="POST" class="col-md-6">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-secondary">Add Category</button>
-        </div>
-        </form>
+    </div>
+    </form>
     {% else %}
     Please login first!
     {% endif %}
     {% endblock %}
 </body>
+
 </html>

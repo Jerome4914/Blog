@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,30 +10,32 @@
         {% block title %}
         Edit Blog Post!
         {% endblock%}
-    </title>    
+    </title>
 </head>
+
 <body>
-    
+
     {% block content %}
     {% if user.is_authenticated %}
-        {% if user.id == post.author.id %}
-            <h1>Update Post...</h1>
-            <br><br/>
-            <div class="form-group">
-            <form method="POST" class="col-md-9">
-                {% csrf_token %}
-                {{ form.media }}
-                {{ form.as_p }}
-                <button class="btn btn-secondary">Update</button>
-            </div>
-            </form>
-        {% else %}
-            You're not allowed here! (and you know it...)
-        {% endif %}
+    {% if user.id == post.author.id %}
+    <h1>Update Post...</h1>
+    <br><br />
+    <div class="form-group">
+        <form method="POST" class="col-md-9">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button class="btn btn-secondary">Update</button>
+    </div>
+    </form>
+    {% else %}
+    You're not allowed here! (and you know it...)
+    {% endif %}
     {% else %}
     Please login first!
     {% endif %}
 
     {% endblock %}
 </body>
+
 </html>

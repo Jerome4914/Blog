@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,30 +8,32 @@
     {% extends 'base.html' %}
     <title>Home</title>
 </head>
+
 <body>
-    
+
     {% block content %}
-    <h1>Posts</h1>
+    <h1>Posts...</h1>
     <ul>
-    {% for post in object_list %}
+        {% for post in object_list %}
         <li>
             <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
             - <a href="{% url 'category' post.category|slugify %}">{{post.category}}</a>
             - {{post.author.first_name }}
-            {{post.author.last_name}}  
+            {{post.author.last_name}}
             {% if user.is_authenticated %}
-                {% if user.id == post.author.id %}
-                    <small>
-                    - <a href="{%url 'update_post' post.pk %}">(Edit)</a>
-                    <a href="{%url 'delete_post' post.pk %}">(Delete)</a>
-                    </small><br/>
-                {% endif %}
+            {% if user.id == post.author.id %}
+            <small>
+                - <a href="{%url 'update_post' post.pk %}">(Edit)</a>
+                <a href="{%url 'delete_post' post.pk %}">(Delete)</a>
+            </small><br />
+            {% endif %}
             {% endif %}
             {{ post.snippet }}
-        
+
         </li>
-    {% endfor %}
+        {% endfor %}
     </ul>
     {% endblock %}
 </body>
+
 </html>

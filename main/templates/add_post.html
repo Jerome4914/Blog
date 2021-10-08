@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,30 +12,30 @@
         {% endblock%}
     </title>
 </head>
+
 <body>
-    
+
     {% block content %}
     {% if user.is_authenticated %}
-        <h1>Add Blog Post...</h1>
-        <br><br/>
-        <div class="form-group">
+    <h1>Add Blog Post...</h1>
+    <br><br />
+    <div class="form-group">
         <form method="POST" class="col-md-9" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.media }}
             {{ form.as_p }}
             <button class="btn btn-secondary">Post</button>
-        </div>
-        </form>
-        <script>
-            var name = "{{ user.id }}";
-            document.getElementById("user").value
-                = name;
-
-        </script>
+    </div>
+    </form>
+    <script>
+        var name = "{{ user.id }}";
+        document.getElementById("user").value = name;
+    </script>
 
     {% else %}
     Please login first!
     {% endif %}
     {% endblock %}
 </body>
+
 </html>
